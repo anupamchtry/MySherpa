@@ -4,7 +4,7 @@ This guide explains where to make common changes without having to understand th
 
 ## Start here
 
-The application is currently a frontend prototype. Trek, route and seed warning data live in local files. User reports, confirmations, coordinator actions and the ABC download persist in browser IndexedDB until a backend is connected.
+Trek, route and seed warning data live in local files. User reports, confirmations, coordinator actions and the ABC download persist in browser IndexedDB. Reports and coordinator changes also synchronise through server API routes to Cloudflare D1.
 
 Run the project from the `MySherpa` folder:
 
@@ -29,7 +29,7 @@ Edit `app/page.tsx` for:
 - Home, Explore, Nearby, Community and Trek Details screen composition;
 - opening and closing the warning form;
 - selected trek and selected warning state;
-- connectivity, download, sync and coordinator action orchestration.
+- download, sync and coordinator action orchestration.
 
 This is the first file to inspect when adding a new screen or changing the order of information on a screen.
 
@@ -84,6 +84,9 @@ Edit `lib/models.ts` when introducing a new shared field. TypeScript will then s
 - `lib/routeSafety.ts`: decides whether warnings affect a route and returns the route assessment.
 - `lib/offlineStore.ts`: IndexedDB reads and writes for reports and downloaded route packages.
 - `services/trekService.ts`: defines the frontend-facing data service and its current mock implementation.
+- `services/warningApi.ts`: browser client for report listing, upload and coordinator updates.
+- `app/api/warnings/`: server routes and D1 warning repository.
+- `db/schema.ts` and `drizzle/`: database schema and migrations.
 
 Keep decisions such as “does this warning affect the route?” out of visual components. That makes the same logic reusable by a backend, mobile app or automated test.
 
@@ -98,9 +101,9 @@ When changing cached assets, change `CACHE_NAME` in `public/sw.js` so installed 
 
 Camera, GPS and battery APIs should be tested over HTTPS or localhost. Battery information is not available in every browser, so the interface must continue working when it is missing.
 
-## Future backend
+## Backend and production hardening
 
-A production backend should own durable and trusted data. Recommended responsibilities:
+The warning backend already provides durable D1 storage and idempotent retries keyed by `clientReportId`. Apply `drizzle/0000_trail_warnings.sql` when provisioning a new database. Before a public production launch, add:
 
 1. Authentication and roles: trekker, guide, coordinator and administrator.
 2. Warning API: create reports, upload images, moderate content and record audit history.
@@ -108,18 +111,17 @@ A production backend should own durable and trusted data. Recommended responsibi
 4. Route processor: match verified warnings to trail segments; only return an alternative when a real routing service can provide provenance and constraints.
 5. Nearby data: periodically import and refresh OpenStreetMap or partner listings.
 6. Notifications: alert users whose saved route intersects a new verified hazard.
-7. Offline synchronization: queue reports on-device and retry safely without duplicates.
+7. Audit and conflict handling: preserve every moderation transition and resolve concurrent edits explicitly.
 
-Keep browser code talking to an interface such as `TrekService`. Later, create a remote implementation in `services/` that calls endpoints such as:
+Keep browser code talking through service modules. Current warning endpoints are:
 
 ```text
-GET  /api/treks
-GET  /api/treks/:id/route
-GET  /api/treks/:id/warnings
+GET  /api/warnings
 POST /api/warnings
-POST /api/warnings/:id/evidence
-PATCH /api/warnings/:id/status
+PUT  /api/warnings/:id
 ```
+
+Future trek, media and routing services can add endpoints without moving request code into visual components.
 
 Never put database passwords, map-provider secrets or private API keys in React files or `public/`. Keep them in server-side environment variables.
 
