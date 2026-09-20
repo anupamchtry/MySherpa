@@ -52,8 +52,9 @@ export default defineConfig(async () => {
 
   return {
     server: {
+      watch: { ignored: ["**/.edge-test/**"] },
       ...(managedLinux ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] } : {}),
-      ...(isCodexSeatbeltSandbox ? { watch: { useFsEvents: false, usePolling: true } } : {}),
+      ...(isCodexSeatbeltSandbox ? { watch: { ignored: ["**/.edge-test/**"], useFsEvents: false, usePolling: true } } : {}),
     },
     plugins: [
       vinext(),

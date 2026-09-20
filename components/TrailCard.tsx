@@ -42,7 +42,7 @@ export function TrailCard({ trek, featured = false, onOpen }: TrailCardProps) {
         </div>
         <div className="trail-card__footer">
           <span className={`difficulty difficulty--${trek.difficulty.toLowerCase()}`}>{trek.difficulty}</span>
-          <span><MapPin size={14} /> {trek.safetyScore}% safety score</span>
+          <span><MapPin size={14} /> {trek.safety} conditions</span>
         </div>
       </div>
     </button>

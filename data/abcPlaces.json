@@ -1,0 +1,12 @@
+[
+  {"id":"w219995230","name":"International Guest-House and Restaurant","category":"Lodge","latitude":28.4181563,"longitude":83.8180754,"phone":"9746014896, 9846107026","note":"Guest house and restaurant in Chhomrong; availability not verified.","source":"OpenStreetMap"},
+  {"id":"w219995253","name":"New Chhomrong Guest House and Restaurant","category":"Lodge","latitude":28.4200201,"longitude":83.8174605,"phone":"9746064598, 9746065630","note":"Mapped lodge and restaurant in upper Chhomrong.","source":"OpenStreetMap"},
+  {"id":"n1382924926","name":"Hotel Himal","category":"Lodge","latitude":28.4281035,"longitude":83.8294134,"note":"Mapped guest house on the Chhomrong–Sinuwa section.","source":"OpenStreetMap"},
+  {"id":"n1736669828","name":"Sinuwa Guesthouse","category":"Lodge","latitude":28.4356548,"longitude":83.8384571,"note":"Mapped lodge at Sinuwa; opening status not verified.","source":"OpenStreetMap"},
+  {"id":"w350865285","name":"Dovan Guest House","category":"Lodge","latitude":28.4698693,"longitude":83.8696423,"note":"Mapped guest house at Dovan.","source":"OpenStreetMap"},
+  {"id":"n1736457253","name":"Himalaya Guesthouse","category":"Lodge","latitude":28.4845982,"longitude":83.8887789,"phone":"9746069234","note":"Mapped hotel in the Himalaya settlement.","source":"OpenStreetMap"},
+  {"id":"n4193344289","name":"Deurali Guest House","category":"Lodge","latitude":28.4983007,"longitude":83.8991697,"note":"Mapped lodge at Deurali.","source":"OpenStreetMap"},
+  {"id":"n4193320690","name":"Machhapuchhare Guest House and Restaurant","category":"Lodge","latitude":28.5263167,"longitude":83.907755,"note":"Mapped lodge at Machhapuchhare Base Camp.","source":"OpenStreetMap"},
+  {"id":"n4165958406","name":"Annapurna Guest House & Restaurant","category":"Lodge","latitude":28.5307017,"longitude":83.8783797,"note":"Mapped guest house at Annapurna Base Camp.","source":"OpenStreetMap"},
+  {"id":"n4193344390","name":"Snowland Lodge and Restaurant","category":"Lodge","latitude":28.5306269,"longitude":83.8780384,"phone":"+977 61696834, +977 9746090180","rooms":15,"note":"Mapped 15-room lodge at Annapurna Base Camp.","source":"OpenStreetMap"}
+]
