@@ -87,7 +87,7 @@ export const warnings: Warning[] = [
     verified: true,
     severity: "high",
     photo: "/annapurna-trail.png",
-    point: { x: 54, y: 49 },
+    point: { latitude: 28.4245, longitude: 83.8132 },
   },
   {
     id: "warning-2",
@@ -100,7 +100,7 @@ export const warnings: Warning[] = [
     author: "Maya Sherpa",
     verified: true,
     severity: "medium",
-    point: { x: 69, y: 33 },
+    point: { latitude: 28.4639, longitude: 83.8748 },
   },
   {
     id: "warning-3",
@@ -113,7 +113,7 @@ export const warnings: Warning[] = [
     author: "Tashi L.",
     verified: false,
     severity: "high",
-    point: { x: 61, y: 26 },
+    point: { latitude: 28.6585, longitude: 84.4772 },
   },
 ];
 

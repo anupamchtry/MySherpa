@@ -28,6 +28,10 @@ UI state stays in the app layer; route assessment is isolated in `lib/routeSafet
 
 The prototype includes Annapurna Base Camp, Manaslu Circuit, Poon Hill, Langtang Valley, and Mardi Himal. It models active landslide, bridge, and weather warnings plus lodges, local businesses, energy stops, and trekking groups. Search loading, no-results, error toast, upload preview, and browser offline states are represented.
 
+## Map data
+
+The ABC screen uses Leaflet with switchable Esri World Imagery and OpenTopoMap layers. The route geometry is sampled from TrekGuard's publicly downloadable recorded GPX planning track for the [Annapurna Base Camp route](https://trekguard.app/routes/annapurna-base-camp/). It is not a surveyed navigation product: users must verify junctions, closures, weather, and local guidance before walking. Other trek screens show their regional basemap until verified GPX tracks are added.
+
 ## Future backend integration
 
 Implement `TrekService` with a remote adapter and keep its return models stable. Add adapters for weather, satellite/environment monitoring, authentication, notification delivery, map tiles/geocoding, image upload, and backend route/warning processing. Secrets must stay in server-side environment variables—never in browser bundles. Community submissions should be authenticated, virus-scanned, moderated, rate-limited, and geospatially matched to route segments before they affect routing.

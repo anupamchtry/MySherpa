@@ -341,4 +341,41 @@ h1, h2, h3, p { margin-top: 0; }
   .toast { bottom: 84px; }
 }
 
+.route-map--leaflet { isolation: isolate; background: #102e29; }
+.leaflet-map-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; background: #173a33; }
+.leaflet-map-canvas .leaflet-control-attribution { max-width: min(72vw, 720px); padding: 3px 7px; background: rgba(255,255,255,.86); color: #30423c; font-size: .61rem; line-height: 1.25; }
+.leaflet-map-canvas .leaflet-control-attribution a { color: #174f3d; }
+.leaflet-map-canvas .leaflet-control-scale-line { border-color: rgba(255,255,255,.8); background: rgba(12,39,32,.72); color: white; text-shadow: none; }
+.map-layer-switcher { position: absolute; z-index: 500; right: 17px; top: 17px; display: flex; gap: 4px; padding: 4px; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; background: rgba(9,30,26,.8); backdrop-filter: blur(10px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+.map-layer-switcher button { min-height: 35px; padding: 0 10px; display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 8px; background: transparent; color: #d7e4de; font-size: .72rem; font-weight: 800; cursor: pointer; }
+.map-layer-switcher button.active { background: var(--lime); color: #173027; }
+.route-map--leaflet .map-weather { z-index: 500; }
+.route-map--leaflet .map-controls { z-index: 500; top: 70px; }
+.map-data-note { position: absolute; z-index: 500; left: 18px; bottom: 24px; display: grid; gap: 1px; padding: 9px 11px; border: 1px solid rgba(255,255,255,.16); border-radius: 11px; background: rgba(9,30,26,.78); color: white; backdrop-filter: blur(10px); box-shadow: 0 8px 24px rgba(0,0,0,.18); pointer-events: none; }
+.map-data-note strong { font-size: .74rem; }
+.map-data-note span { color: #c6d7d0; font-size: .63rem; }
+.map-loading { position: absolute; z-index: 520; inset: 0; display: flex; align-items: center; justify-content: center; gap: 9px; background: #173a33; color: white; font-size: .82rem; font-weight: 750; }
+.map-loading span { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,.3); border-top-color: var(--lime); border-radius: 50%; animation: map-spin .8s linear infinite; }
+@keyframes map-spin { to { transform: rotate(360deg); } }
+.map-tile-error { position: absolute; z-index: 510; left: 50%; top: 50%; transform: translate(-50%,-50%); width: min(390px, calc(100% - 40px)); padding: 12px 14px; border-radius: 12px; background: rgba(255,247,231,.94); color: #6d4412; font-size: .78rem; font-weight: 750; text-align: center; box-shadow: var(--shadow); }
+.trail-warning-marker-shell { background: transparent; border: 0; }
+.trail-warning-marker { width: 34px; height: 34px; display: grid; place-items: center; border: 3px solid white; border-radius: 50% 50% 50% 7px; rotate: -45deg; color: white; font-size: .88rem; font-weight: 900; box-shadow: 0 6px 16px rgba(0,0,0,.38); }
+.trail-warning-marker::first-letter { rotate: 45deg; }
+.trail-warning-marker--high { background: var(--red); }
+.trail-warning-marker--medium { background: var(--amber); color: #4b2c06; }
+.leaflet-warning-popup { min-width: 180px; display: grid; gap: 3px; color: var(--ink); }
+.leaflet-warning-popup small { color: var(--red); font-weight: 800; }
+.leaflet-warning-popup strong { font-size: .85rem; }
+.leaflet-warning-popup span { color: var(--muted); font-size: .72rem; }
+.route-map--leaflet .alternate-chip { z-index: 500; bottom: 28px; }
+
+@media (max-width: 640px) {
+  .map-layer-switcher { left: 12px; right: auto; top: 12px; }
+  .route-map--leaflet .map-weather { top: 62px; left: 12px; }
+  .route-map--leaflet .map-controls { top: 12px; right: 12px; }
+  .map-data-note { left: 12px; bottom: 32px; }
+  .route-map--leaflet .alternate-chip { bottom: 82px; max-width: calc(100% - 24px); white-space: nowrap; }
+  .leaflet-map-canvas .leaflet-control-attribution { max-width: 85vw; font-size: .55rem; }
+}
+
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

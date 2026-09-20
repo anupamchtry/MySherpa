@@ -29,7 +29,7 @@ export interface Warning {
   verified: boolean;
   severity: "medium" | "high";
   photo?: string;
-  point: { x: number; y: number };
+  point: { latitude: number; longitude: number } | { x: number; y: number };
 }
 
 export interface NearbyPlace {
